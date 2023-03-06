@@ -3,16 +3,28 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --tunnel --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "eas:test": "eas build -p android --profile preview"
   },
   "dependencies": {
+    "@expo-google-fonts/montserrat": "^0.2.3",
+    "@react-navigation/material-bottom-tabs": "^6.2.15",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
+    "eas-cli": "^3.7.2",
     "expo": "~48.0.5",
     "expo-status-bar": "~1.4.4",
+    "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.71.3"
+    "react-native": "0.71.3",
+    "react-native-paper": "^5.2.0",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "~3.20.0",
+    "react-native-vector-icons": "^9.2.0",
+    "tailwindcss": "^3.2.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
