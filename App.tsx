@@ -7,6 +7,8 @@ import {
   useFonts, Montserrat_400Regular, Montserrat_500Medium, Montserrat_600SemiBold, Montserrat_700Bold
 } from '@expo-google-fonts/montserrat';
 import { AuthPage } from './app/pages/Auth';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,15 +23,17 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <SafeAreaView style={{ flex: 1, marginTop: StatusBarRN.currentHeight || 0 }}>
-      <NavigationContainer theme={{
-        ...DefaultTheme, colors: { ...DefaultTheme.colors, background: '#fff' }
-      }}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Auth" component={AuthPage} />
-        </Stack.Navigator>
-        <StatusBar style="auto" />
-      </NavigationContainer>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={{ flex: 1, marginTop: StatusBarRN.currentHeight || 0 }}>
+        <NavigationContainer theme={{
+          ...DefaultTheme, colors: { ...DefaultTheme.colors, background: '#fff' }
+        }}>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Auth" component={AuthPage} />
+          </Stack.Navigator>
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </SafeAreaView>
+    </Provider>
   );
 }
