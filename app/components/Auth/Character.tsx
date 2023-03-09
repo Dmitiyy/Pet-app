@@ -5,6 +5,7 @@ import { CheckBox } from "../UI/CheckBox";
 import { Indicator } from "../UI/Indicator";
 import { Label } from "../UI/Label";
 import { BottomBtns } from "./BottomBtns";
+import { ImageAuth } from "./ImageAuth/ImageAuth";
 
 export const Character: FC = () => {
   const { step, endStep, character } = useAppSelector(state => state.auth);
@@ -16,10 +17,11 @@ export const Character: FC = () => {
 
   return (
     <Fragment>
+      <ImageAuth />
       <Indicator step={step} numberOfSteps={endStep} />
       <Label title="What are you looking for?" />
-      <CheckBox handleData={handleData} data={['Jobs', 'Pet sitters']} initial={character} />
+      <CheckBox handleData={handleData} data={['Jobs', 'Pet sitters']} />
       <BottomBtns disabled={character.length === 0} />
     </Fragment>
   )
-}
+} 
