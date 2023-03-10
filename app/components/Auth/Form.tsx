@@ -1,11 +1,13 @@
 import { FC, useState } from "react";
 import { ScrollView, TextInput, View, Pressable } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
+import { Feather } from '@expo/vector-icons';
 import { useAppSelector } from "../../store";
 import { Indicator } from "../UI/Indicator";
 import { Label } from "../UI/Label";
 import { ImageAuth } from "./ImageAuth/ImageAuth";
 import { CheckBox } from "../UI/CheckBox";
+import { Select } from "../UI/Select";
 
 export const Form: FC = () => {
   const { step, endStep, character } = useAppSelector(state => state.auth);
@@ -32,7 +34,7 @@ export const Form: FC = () => {
   };
 
   return (
-    <ScrollView style={{ width: '100%' }} showsVerticalScrollIndicator={false}>
+    <ScrollView style={{ width: '100%' }} showsVerticalScrollIndicator={false} horizontal={false}>
       <ImageAuth />
       <Indicator step={step} numberOfSteps={endStep} />
       <Label title="Name" compulsory />
@@ -64,6 +66,21 @@ export const Form: FC = () => {
           placeholder="Press to add a photo"
         />
       </Pressable>
+      <Label title="Country" compulsory />
+      <View className="flex flex-row">
+        <View
+          className="w-[45px] h-[45px] bg-[#E0F6FB] items-center justify-center mt-3"
+          style={{ borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
+        >
+          <Feather name="search" size={16} color="rgba(0, 0, 0, 0.5)" />
+        </View>
+        <TextInput
+          className={inputStyles + " flex-1"}
+          style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0, paddingLeft: 0 }}
+          placeholder="Search country"
+        />
+      </View>
+      <Select />
       <Label title="Age" compulsory />
       <TextInput
         className={inputStyles}

@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Text, View, TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 interface IProps {
   data: [string, string];
@@ -8,10 +9,9 @@ interface IProps {
 }
 
 export const CheckBox: FC<IProps> = ({ data, handleData, multiple = false }) => {
-  // const [active, setActive] = useState<number>(data.indexOf(initial));
   const [multipleValue, setMultipleValue] = useState<string[]>([]);
 
-  const onHandleClick = (index: number, item: string) => {
+  const onHandleClick = (item: string) => {
     let result: string[] = [...multipleValue];
 
     if (multiple) {
@@ -36,12 +36,17 @@ export const CheckBox: FC<IProps> = ({ data, handleData, multiple = false }) => 
               className="w-[48%] h-[45px] rounded-[10px] flex flex-row items-center"
               style={{ backgroundColor: isActive ? "#94EABC" : "#E0F6FB" }}
               activeOpacity={0.4}
-              onPress={() => { onHandleClick(index, item) }}
+              onPress={() => { onHandleClick(item) }}
             >
               <View
                 className="w-[20px] h-[20px] rounded-full border-4 border-[#C9E8EF] ml-3"
-                style={{ backgroundColor: isActive ? "#000" : "#C9E8EF" }}
-              />
+                style={{ backgroundColor: (isActive && !multiple) ? "#000" : "#C9E8EF" }}
+              >
+                <FontAwesome
+                  name="check" size={13}
+                  color={(isActive && multiple) ? "black" : "transparent"}
+                />
+              </View>
               <Text className="ml-2 font-[SemiBold] text-[13px]">{item}</Text>
             </TouchableOpacity>
           )
