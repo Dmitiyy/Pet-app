@@ -5,7 +5,7 @@ import { GreenBtn } from '../components/UI/GreenBtn';
 import { Indicator } from '../components/UI/Indicator';
 import { Character } from '../components/Auth/Character';
 import { useAppDispatch, useAppSelector } from '../store';
-import { setStep } from '../store/slices/auth';
+import { setLoginStatus, setStep } from '../store/slices/auth';
 import { Form } from '../components/Auth/Form';
 
 export const AuthPage: FC = () => {
@@ -30,8 +30,15 @@ export const AuthPage: FC = () => {
                     title="Start exploring"
                     press={() => { dispatch(setStep(step + 1)) }}
                   />
-                  <Text className="mt-3 font-[Medium] text-[14px]">
-                    Already have an account? <Text className="font-[Bold]">Login</Text>
+                  <Text className="font-[Medium] text-[14px] mt-3">
+                    Already have an account?
+                    <Text
+                      className="font-[Bold]"
+                      onPress={() => {
+                        dispatch(setStep(3));
+                        dispatch(setLoginStatus(true));
+                      }}
+                    > Login</Text>
                   </Text>
                 </Fragment>
               );

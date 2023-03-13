@@ -9,6 +9,7 @@ import {
 import { AuthPage } from './app/pages/Auth';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
+import { Authorized } from './app/pages/Authorized';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function App() {
         }}>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Auth" component={AuthPage} />
+            <Stack.Screen name="Authorized" component={Authorized} />
           </Stack.Navigator>
           <StatusBar style="auto" />
         </NavigationContainer>

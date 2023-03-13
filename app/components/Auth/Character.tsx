@@ -20,7 +20,11 @@ export const Character: FC = () => {
       <ImageAuth />
       <Indicator step={step} numberOfSteps={endStep} />
       <Label title="What are you looking for?" />
-      <CheckBox handleData={handleData} data={['Jobs', 'Pet sitters']} />
+      <CheckBox
+        handleData={handleData}
+        data={['Jobs', 'Pet sitters']}
+        initial={character.split(', ')}
+      />
       <BottomBtns disabled={character.length === 0} />
     </Fragment>
   )

@@ -6,13 +6,15 @@ interface AuthState {
   endStep: number;
   character: string;
   form: object;
+  isLogin: boolean;
 };
 
 const initialState = {
   step: 1,
   endStep: 3,
   character: '',
-  form: {}
+  form: {},
+  isLogin: false
 } as AuthState;
 
 const authSlice = createSlice({
@@ -24,9 +26,12 @@ const authSlice = createSlice({
     },
     setCharacter(state, action: PayloadAction<string>) {
       state.character = action.payload;
+    },
+    setLoginStatus(state, action: PayloadAction<boolean>) {
+      state.isLogin = action.payload;
     }
   }
 });
 
-export const { setStep, setCharacter } = authSlice.actions;
+export const { setStep, setCharacter, setLoginStatus } = authSlice.actions;
 export default authSlice.reducer;

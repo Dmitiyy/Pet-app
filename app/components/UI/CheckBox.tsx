@@ -6,10 +6,11 @@ interface IProps {
   data: [string, string];
   handleData: (data: string) => void;
   multiple?: boolean;
+  initial?: string[];
 }
 
-export const CheckBox: FC<IProps> = ({ data, handleData, multiple = false }) => {
-  const [multipleValue, setMultipleValue] = useState<string[]>([]);
+export const CheckBox: FC<IProps> = ({ data, handleData, multiple = false, initial = [] }) => {
+  const [multipleValue, setMultipleValue] = useState<string[]>([...initial]);
 
   const onHandleClick = (item: string) => {
     let result: string[] = [...multipleValue];
